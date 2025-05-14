@@ -5,8 +5,6 @@
 **Giảng viên hướng dẫn**: ThS. Nguyễn Hồ Duy Trí  
 **TP. Hồ Chí Minh, Năm 2024**
 
-## ÁP DỤNG GIẢI THUẬT KHAI THÁC DỮ LIỆU
-
 ### Giải thuật Support Vector Machine
 
 #### Khái niệm
