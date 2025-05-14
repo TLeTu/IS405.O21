@@ -8,7 +8,7 @@
 ---
 ### Mô tả bài toán
 
-Bài toán tập trung vào việc dự đoán khả năng khách hàng đăng ký gửi tiền có kỳ hạn dựa trên dữ liệu từ các chiến dịch tiếp thị trực tiếp (qua cuộc gọi điện thoại) của một tổ chức ngân hàng Việt Nam sử dụng các thuật toán phân lớp (K-Nearest Neighbors, Support Vector Machine, Random Forest) được triển khai trên Apache Spark để xử lý dữ liệu lớn và đưa ra dự đoán chính xác.
+Bài toán tập trung vào việc dự đoán khả năng khách hàng đăng ký gửi tiền có kỳ hạn dựa trên dữ liệu từ các chiến dịch tiếp thị trực tiếp (qua cuộc gọi điện thoại) của một tổ chức ngân hàng Việt Nam sử dụng thuật toán phân lớp Support Vector Machine được triển khai trên Apache Spark để xử lý dữ liệu lớn và đưa ra dự đoán chính xác.
 
 ### Mô tả dữ liệu
 
