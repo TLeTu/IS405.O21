@@ -38,64 +38,47 @@ Dữ liệu gồm 42600 dòng và 16 cột dữ liệu, trong đó:
 | 15  | term_deposit   | binary       | Khách hàng có đăng ký gửi tiền kỳ hạn không? 0 (không), 1 (có) |
 
 ### Giải thuật Support Vector Machine
+
 #### Khái niệm
-Nguyên lý hoạt động của Support Vector Machine:
+
+**Nguyên lý hoạt động của Support Vector Machine:**
 
 - SVM là một thuật toán máy học thường được sử dụng cho các bài toán phân lớp nhị phân.
-- SVM hoạt động bằng cách tìm một siêu phẳng (hyperplane) với biên lớn nhất phân chia dữ liệu thành các lớp, siêu phẳng được tính theo công thức: \( w \cdot x - b = 0 \), trong đó
-  - \( w, b \) là các trọng số
-  - \( x \) là các thuộc tính feature của bộ dữ liệu
-- SVM sẽ có công thức như sau:
+- SVM hoạt động bằng cách tìm một siêu phẳng (hyperplane) với biên lớn nhất phân chia dữ liệu thành các lớp, siêu phẳng được tính theo công thức:  
+  $$ w \cdot x - b = 0 $$  
+  trong đó:  
+  - \( w, b \): các trọng số  
+  - \( x \): các thuộc tính feature của bộ dữ liệu  
+- SVM sẽ có công thức như sau:  
+  $$ f(x) = \text{sign}(w \cdot x + b) $$
 
-\[
-f(x) = \operatorname{sign}(w \cdot x + b)
-\]
+**Phương pháp Stochastic Gradient Descent (SGD):**
 
-Phương pháp Stochastic Gradient Descent:
+- Để tính toán được giá trị tối ưu của các trọng số, chúng ta sẽ tìm cách giảm thiểu giá trị của hàm cost:  
+  $$ J(w) = \frac{1}{2}\|w\|^2 + C \left[ \frac{1}{N} \sum_{i}^n \max \left(0, 1 - y_i \cdot (w \cdot x_i + b) \right) \right] $$
 
-- Để tính toán được giá trị tối ưu của các trọng số, chúng ta sẽ tính bằng cách giảm tối thiểu giá trị của hàm cost:
+- Chúng ta có thể gộp \( w \) và \( b \) lại thành một bằng cách đưa \( b \) vào vector \( W \) như sau:  
+  $$ f(x_i) = w^\sim \cdot x_i^\sim + b = W \cdot x_i, $$  
+  với:  
+  $$ W = (w^\sim, b), \quad x_i = (x_i^\sim, 1) $$
 
-\[
-J(w) = \frac{1}{2}\|w\|^2 + C \left[ \frac{1}{N} \sum_i^n \max \left(0, 1 - y_i \cdot \left(w \cdot x_i + b\right)\right) \right]
-\]
+- Sau đó, hàm cost sẽ trở thành:  
+  $$ J(w) = \frac{1}{2}\|w\|^2 + C \left[ \frac{1}{N} \sum_i^n \max \left(0, 1 - y_i \cdot (W \cdot x_i) \right) \right] $$
 
-- Chúng ta có thể gộp \( w \) và \( b \) lại thành một bằng cách đưa \( b \) vào vector \( W \) như sau:
+- Dựa vào hàm cost, chúng ta tính đạo hàm riêng (gradient) theo \( W \):  
+  $$ \nabla_W J(w) = \frac{1}{N} \sum_i^n \begin{cases} 
+  W & \text{if } \max \left(0, 1 - y_i \cdot (W \cdot x_i) \right) == 0 \\ 
+  W - C y_i x_i & \text{otherwise} 
+  \end{cases} $$
 
-\[
-f(x_i) = w^{\sim} \cdot x_i^{\sim} + b = W \cdot x_i,
-\]
+- Để giảm tối thiểu giá trị của hàm cost, chúng ta sử dụng phương pháp **SGD (Stochastic Gradient Descent)**:  
+  - **Bước 1**: Tính đạo hàm riêng của hàm cost.  
+  - **Bước 2**: Di chuyển trọng số hướng ngược gradient bằng công thức:  
+    $$ W = W - \text{gradient} $$  
+  - **Bước 3**: Lặp lại đến khi tìm được \( W \) sao cho \( J(W) \) đạt nhỏ nhất.  
 
-với,
+- Đạo hàm riêng là hướng tăng nhanh nhất của hàm số, vì vậy đi ngược lại sẽ giảm tối thiểu hàm \( J(W) \).
 
-\[
-W = (w^{\sim}, b), \quad x_i = (x_i^{\sim}, 1)
-\]
-
-- Sau đó thì hàm cost sẽ trở thành:
-
-\[
-J(w) = \frac{1}{2}\|w\|^2 + C \left[ \frac{1}{N} \sum_i^n \max \left(0, 1 - y_i \cdot \left(W \cdot x_i\right)\right) \right]
-\]
-
-- Dựa vào hàm cost, chúng ta tính đạo hàm riêng (gradient) theo \( W \):
-
-\[
-\nabla_W J(w) = \frac{1}{N} \sum_i^n \left\{
-\begin{array}{l}
-W \text{ if } \max \left(0, 1 - y_i \cdot \left(W \cdot x_i\right)\right) == 0 \\
-W - C y_i x_i \quad \text{ otherwise }
-\end{array}
-\right.
-\]
-
-- Và để giảm tối thiểu giá trị của hàm cost thì chúng ta sử dụng phương pháp SGD (Stochastic Gradient Descent):
-
-  - **Bước 1**: Tính đạo hàm riêng của hàm cost.
-  - **Bước 2**: Di chuyển trọng số hướng ngược bằng công thức \( W = W - \text{gradient} \).
-  - **Bước 3**: Lặp lại đến khi ta tìm được \( W \) sao cho \( J(W) \) đạt nhỏ nhất.
-  - Đạo hàm riêng là hướng tăng nhanh nhất của hàm số, vì vậy đi ngược lại sẽ giảm tối thiểu hàm \( J(W) \).
-
-- Lý do phải giảm tối thiểu hàm cost là vì về cơ bản hàm cost là một thước đo mức độ kém hiệu quả của mô hình trong việc đạt được mục tiêu. Nếu nhìn vào \( J(w) \), để tìm giá trị nhỏ nhất của nó, chúng ta phải:
-  - Giảm tối thiểu \( ||w||^2 \), nghĩa là tối đa \( \frac{2}{||w||} \) (biên của siêu phẳng).
-  - Giảm tối thiểu tổng của \( \max \left(0, 1 - y_i \cdot \left(W \cdot x_i\right)\right) \), nghĩa là tối thiểu việc phân lớp sai.
-
+- Lý do phải **phải giảm tối thiểu hàm cost** là vì về cơ bản hàm cost là một thước đo mức độ kém hiệu quả của mô hình trong việc đạt được mục tiêu. Để tìm giá trị nhỏ nhất của \( J(w) \), chúng ta phải:  
+  - Giảm tối thiểu \( \|w\|^2 \), nghĩa là tối đa hóa \( \frac{2}{\|w\|} \) (biên của siêu phẳng).  
+  - Giảm tối thiểu tổng của \( \max \left(0, 1 - y_i \cdot (W \cdot x_i) \right) \), nghĩa là tối thiểu việc phân lớp sai.
