@@ -1,6 +1,7 @@
 # Triển khai thuật toán phân loại để dự đoán việc khách hàng đăng ký gửi tiền có kỳ hạn trên Apache Spark
 1/ Mô tả bài toán
 Bài toán của đề tài là dự đoán khả năng khách hàng đăng ký gửi tiền có kỳ hạn từ các chiến dịch tiếp thị của một tổ chức ngân hàng Việt Nam. Cụ thể, mục tiêu là áp dụng thuật toán phân lớp sử dụng dữ liệu khách hàng, thông tin từ các chiến dịch iếp thị và các yếu tố liên quan khác để dự đoán khả năng khách hàng sẽ đăng ký gửi tiền có kỳ hạn. Nhằm tối ưu hóa chiến lược tiếp thị, tập trung vào những khách hàng có khả năng cao nhất để tăng doanh số.
+
 2/ Mô tả dữ liệu
 - Tên dataset: Bank Customer Data in VietNam
 - Nguồn dữ liệu: https://www.kaggle.com/datasets/tomculihiddleston/bank-customer-data-in-vietnam/data
