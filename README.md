@@ -5,6 +5,14 @@
 **Giảng viên hướng dẫn**: ThS. Nguyễn Hồ Duy Trí  
 **TP. Hồ Chí Minh, Năm 2024**
 
+### Mô tả dữ liệu
+
+- Tên dataset: Bank Customer Data in VietNam
+- Nguồn dữ liệu: https://www.kaggle.com/datasets/tomculihiddleston/bank-customer-data-in-vietnam/data
+- Mô tả dữ liệu:  Dữ liệu có liên quan đến các chiến dịch tiếp thị trực tiếp (cuộc gọi điện thoại) của một tổ chức ngân hàng Việt Nam. Mục tiêu là dự đoán xem khách hàng có đăng ký gửi tiền có kỳ hạn hay không.
+<img width="1597" height="662" alt="image" src="https://github.com/user-attachments/assets/8f653d77-7df3-4694-851b-172f442fd23b" />
+
+
 ### Support Vector Machine
 
 ![image](https://github.com/user-attachments/assets/e4aedb4c-7cd6-4835-8eba-b4da58909796)
