@@ -12,6 +12,11 @@
 - Mô tả dữ liệu:  Dữ liệu có liên quan đến các chiến dịch tiếp thị trực tiếp (cuộc gọi điện thoại) của một tổ chức ngân hàng Việt Nam. Mục tiêu là dự đoán xem khách hàng có đăng ký gửi tiền có kỳ hạn hay không.
 <img width="1597" height="662" alt="image" src="https://github.com/user-attachments/assets/8f653d77-7df3-4694-851b-172f442fd23b" />
 
+-Dữ liệu gồm 42600 dòng và 16 cột dữ liệu, trong đó:
+<img width="799" height="483" alt="image" src="https://github.com/user-attachments/assets/8cbca48c-af94-41bb-9973-b9731c23df14" />
+<img width="727" height="758" alt="image" src="https://github.com/user-attachments/assets/10e3705a-7c8b-4384-ac18-d0ab20f1d241" />
+
+
 
 ### Support Vector Machine
 
